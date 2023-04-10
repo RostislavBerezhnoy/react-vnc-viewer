@@ -1,6 +1,7 @@
 {
   "name": "react-vnc-viewer",
   "version": "0.1.0",
+  "description": "Simple react/typescript vnc viewer. Based on noVNC.",
   "author": "Rostislav Berezhnoy",
   "license": "MIT",
   "main": "dist/index.cjs.js",
