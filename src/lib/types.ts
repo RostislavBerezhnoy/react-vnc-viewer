@@ -21,7 +21,7 @@ export type VncViewerProps = {
   autoConnect?: boolean
   retryDuration?: number
   debug?: boolean
-  loadingUI?: ReactNode
+  loader?: ReactNode
   onConnect?: (rfb?: RFB) => void
   onDisconnect?: (rfb?: RFB) => void
   onCredentialsRequired?: (rfb?: RFB) => void

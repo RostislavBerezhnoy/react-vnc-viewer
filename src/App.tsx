@@ -2,30 +2,22 @@ import React, { useRef, useState } from 'react'
 import { VncViewer } from 'lib'
 import { isValid } from 'utils'
 
-export const Spacer = () => <div style={{ width: '2rem', display: 'inline-block' }} />
-
 function App() {
-  const [vncUrl, setVncUrl] = useState('')
-  const [inputUrl, setInputUrl] = useState('')
+  const [vncUrl, setVncUrl] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(true)
   const vncScreenRef = useRef<React.ElementRef<typeof VncViewer>>(null)
 
   return (
     <>
       <div style={{ margin: '1rem' }}>
         <label htmlFor='url'>URL for VNC Stream</label>
-        <Spacer />
-
         <input
           type='text'
-          onChange={({ target: { value } }) => {
-            setInputUrl(value)
-          }}
+          onChange={({ target: { value } }) => setVncUrl(value)}
           name='url'
-          placeholder='wss://your-vnc-url'
+          placeholder='wss://some-vnc-url'
+          style={{ width: '400px', margin: '0 1rem' }}
         />
-
-        <Spacer />
-        <button onClick={() => setVncUrl(inputUrl)}>Go!</button>
       </div>
 
       <div style={{ opacity: 0.5, margin: '1rem' }}>
@@ -35,6 +27,7 @@ function App() {
 
       <div style={{ margin: '1rem' }}>
         <button
+          style={{ margin: '0 5px' }}
           onClick={() => {
             const { connect, connected, disconnect } = vncScreenRef.current ?? {}
 
@@ -50,15 +43,24 @@ function App() {
         {isValid(vncUrl) ? (
           <VncViewer
             url={vncUrl}
-            style={{
-              width: '1024px',
-              height: '768px',
-            }}
+            style={
+              loading
+                ? {
+                    width: '100%',
+                    height: '0',
+                  }
+                : {
+                    width: '1024px',
+                    height: '768px',
+                  }
+            }
             debug
             ref={vncScreenRef}
+            loader={<p>Loading vnc screen...</p>}
+            onConnect={() => setLoading(false)}
           />
         ) : (
-          <div>VNC URL not provided.</div>
+          <p>VNC URL has not been provided</p>
         )}
       </div>
     </>

@@ -29,7 +29,7 @@ const VncViewer: ForwardRefRenderFunction<VncViewerHandle, VncViewerProps> = (
     autoConnect = true,
     retryDuration = 3000,
     debug = false,
-    loadingUI,
+    loader,
     onConnect,
     onDisconnect,
     onCredentialsRequired,
@@ -120,18 +120,19 @@ const VncViewer: ForwardRefRenderFunction<VncViewerHandle, VncViewerProps> = (
   }
 
   const disconnect = () => {
-    const rfb = getRfb()
+    let rfb = getRfb()
 
     try {
       if (rfb) {
         timeouts.current.forEach(id => clearTimeout(id))
         ;(Object.keys(eventListeners.current) as (keyof typeof Events)[]).forEach(event => {
           if (eventListeners.current[event]) {
-            rfb.removeEventListener(event, eventListeners.current[event] as any)
+            rfb?.removeEventListener(event, eventListeners.current[event] as any)
             eventListeners.current[event] = undefined
           }
         })
         rfb.disconnect()
+        rfb = null
         setRfb(null)
         setConnected(false)
 
@@ -281,14 +282,16 @@ const VncViewer: ForwardRefRenderFunction<VncViewerHandle, VncViewerProps> = (
 
   return (
     <>
-      <div
-        style={style}
-        className={className}
-        ref={screen}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      />
-      {loading && (loadingUI ?? <div className='text-white loading'>Loading...</div>)}
+      {url && (
+        <div
+          style={style}
+          className={className}
+          ref={screen}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+      )}
+      {(loading || !url) && (loader ?? <div className='text-white loading'>Loading...</div>)}
     </>
   )
 }
