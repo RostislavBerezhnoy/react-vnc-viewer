@@ -5,7 +5,7 @@ import url from '@rollup/plugin-url';
 const pkg = JSON.parse(readFileSync('package.json', { encoding: 'utf8' }));
 
 export default {
-  input: 'src/index.ts',
+  input: 'src/lib/index.ts',
   output: [
     { file: pkg.main, format: 'cjs' },
     { file: pkg.module, format: 'es' },

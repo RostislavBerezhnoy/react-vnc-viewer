@@ -9,6 +9,7 @@ src/
 .npmignore
 .releaserc.json
 package-lock.json
+yarn.lock
 prepublish.js
 rollup.config.js
 tsconfig.json

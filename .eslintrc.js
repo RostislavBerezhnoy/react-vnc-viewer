@@ -4,6 +4,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   ignorePatterns: [
+    'rollup.config.mjs',
     '**/node_modules/**',
     '**/build/**',
     '**/public/**',

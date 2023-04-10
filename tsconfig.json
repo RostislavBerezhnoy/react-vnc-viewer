@@ -27,6 +27,10 @@
   ],
   "exclude": [
     "dist",
-    "node_modules"
+    "node_modules",
+    "src/App.tsx",
+    "src/index.tsx",
+    "src/utils.ts",
+    "src/index.css",
   ]
 }
