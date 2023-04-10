@@ -1,0 +1,95 @@
+{
+  "name": "react-vnc-viewer",
+  "version": "0.1.0",
+  "author": "Rostislav Berezhnoy",
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "source": "src/lib/index.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "vnc",
+    "noVNC",
+    "react-vnc-viewer",
+    "ws",
+    "wss",
+    "websocket"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RostislavBerezhnoy/react-vnc-viewer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RostislavBerezhnoy/react-vnc-viewer/issues"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@novnc/novnc": "^1.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@rollup/plugin-url": "^8.0.1",
+    "@types/node": "^18.15.3",
+    "@types/novnc__novnc": "^1.3.0",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "babel-loader": "^8.3.0",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint": "8.8.0",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-optimize-regex": "^1.2.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-sonarjs": "^0.11.0",
+    "eslint-plugin-unicorn": "^40.1.0",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "prettier": "^2.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "rollup": "^3.19.1",
+    "tsconfig-paths-webpack-plugin": "^4.0.1",
+    "typescript": "^5.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "lint": "tsc --noEmit && eslint --fix \"**/*.@(js|jsx|ts|tsx)\"",
+    "build": "yarn run build-linux && yarn run build-windows",
+    "build-linux": "node -e \"if (process.platform !== 'win32') process.exit(1)\" || rm -rf ./dist && rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist",
+    "build-windows": "node -e \"if (process.platform === 'win32') process.exit(1)\" || rmdir /s /q dist && rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
