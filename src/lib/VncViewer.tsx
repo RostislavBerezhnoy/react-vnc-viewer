@@ -135,7 +135,7 @@ const VncViewer: ForwardRefRenderFunction<VncViewerHandle, VncViewerProps> = (
         setRfb(null)
         setConnected(false)
 
-        // NOTE(roerohan): This needs to be called since the event listener is removed.
+        // NOTE: This needs to be called since the event listener is removed.
         // Even if the event listener is removed after rfb.disconnect(), the disconnect
         // event is not fired.
         _onDisconnect()
