@@ -17,7 +17,7 @@
     "react-vnc-viewer",
     "ws",
     "wss",
-    "websocket"
+    "websockify"
   ],
   "repository": {
     "type": "git",

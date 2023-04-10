@@ -267,9 +267,8 @@ const VncViewer: ForwardRefRenderFunction<VncViewerHandle, VncViewerProps> = (
   }
 
   const handleMouseEnter = () => {
-    if (document.activeElement && document.activeElement instanceof HTMLElement) {
+    if (document.activeElement && document.activeElement instanceof HTMLElement)
       document.activeElement.blur()
-    }
 
     handleClick()
   }
@@ -291,7 +290,7 @@ const VncViewer: ForwardRefRenderFunction<VncViewerHandle, VncViewerProps> = (
           onMouseLeave={handleMouseLeave}
         />
       )}
-      {(loading || !url) && (loader ?? <div className='text-white loading'>Loading...</div>)}
+      {(loading || !url) && (loader ?? <p>Loading...</p>)}
     </>
   )
 }

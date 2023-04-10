@@ -37,6 +37,17 @@ function App() {
         >
           Connect / Disconnect
         </button>
+        <button
+          onClick={() => {
+            const { rfb } = vncScreenRef.current ?? {}
+            //rfb?.sendCtrlAltDel()
+            rfb?.sendKey(0, 'ControlLeft', true)
+            rfb?.sendKey(0, 'AltLeft', true)
+            rfb?.sendKey(0, 'Delete', true)
+          }}
+        >
+          CTRL+ALT+DELETE
+        </button>
       </div>
 
       <div style={{ margin: '1rem' }}>
