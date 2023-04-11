@@ -1,6 +1,6 @@
 {
   "name": "react-vnc-viewer",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Simple react/typescript vnc viewer. Based on noVNC.",
   "author": "Rostislav Berezhnoy",
   "license": "MIT",
@@ -71,7 +71,8 @@
     "lint": "tsc --noEmit && eslint --fix \"**/*.@(js|jsx|ts|tsx)\"",
     "build": "yarn run build-linux && yarn run build-windows",
     "build-linux": "node -e \"if (process.platform !== 'win32') process.exit(1)\" || rm -rf ./dist && rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist",
-    "build-windows": "node -e \"if (process.platform === 'win32') process.exit(1)\" || rmdir /s /q dist && rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist"
+    "build-windows": "node -e \"if (process.platform === 'win32') process.exit(1)\" || rmdir /s /q dist && rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist",
+    "release": "yarn build && npm publish --access public"
   },
   "eslintConfig": {
     "extends": [

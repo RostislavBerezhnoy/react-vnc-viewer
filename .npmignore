@@ -4,6 +4,7 @@ build/
 node_modules/
 src/
 .eslintignore
+.eslintrc.js
 .gitignore
 .gitmodules
 .npmignore
@@ -12,7 +13,9 @@ package-lock.json
 yarn.lock
 prepublish.js
 rollup.config.js
+rollup.config.mjs
 tsconfig.json
 package.json.bak
 public/
 **/*.tgz
+app.png
