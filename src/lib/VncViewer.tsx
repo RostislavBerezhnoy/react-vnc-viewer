@@ -281,6 +281,7 @@ const VncViewer: ForwardRefRenderFunction<VncViewerHandle, VncViewerProps> = (
 
   return (
     <>
+      {(loading || !url) && (loader ?? <p>Loading...</p>)}
       {url && (
         <div
           style={style}
@@ -290,7 +291,6 @@ const VncViewer: ForwardRefRenderFunction<VncViewerHandle, VncViewerProps> = (
           onMouseLeave={handleMouseLeave}
         />
       )}
-      {(loading || !url) && (loader ?? <p>Loading...</p>)}
     </>
   )
 }

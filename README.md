@@ -1,4 +1,4 @@
-# react-vnc-viewer [in dev]
+# react-vnc-viewer
 
 ## Screenshots
 
